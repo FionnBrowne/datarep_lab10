@@ -8,14 +8,16 @@ export class MovieItem extends React.Component {
 
     constructor() {
         super();
+        //button needs a constructoir to bind to
         this.DeleteMovie = this.DeleteMovie.bind(this);
     }
 
     DeleteMovie(e) {
-        e.preventDefault();
+        e.preventDefault();//makes it canceable so it doesnt allways happen when the page is opened
+       //calls localhost:4000 url
         axios.delete('http://localhost:4000/api/movies/'+this.props.movie._id)
         .then(()=>{
-            this.props.ReloadData();
+            this.props.ReloadData();//will call movies.js//this will then call read.js
         })
         .catch((err)=>{
             console.log(err);
